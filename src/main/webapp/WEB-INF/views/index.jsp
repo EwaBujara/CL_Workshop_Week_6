@@ -6,6 +6,6 @@
     <title>Exam 6 HomePage</title>
 </head>
 <body>
-<p>Exam 6</p>g
+<p>Exam 6</p>
 </body>
 </html>
