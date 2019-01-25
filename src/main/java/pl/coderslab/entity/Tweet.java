@@ -22,7 +22,7 @@ public class Tweet {
     @Size(max = 160)
     private String tweetText; //pole wymagane, maksymalna długość 160 znaków
 
-    LocalDate created; //(data dodania)
+    LocalDate created = LocalDate.now(); //(data dodania)
 
     @ManyToOne
     private User user;
