@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.entity.Tweet;
 import pl.coderslab.repository.TweetRepository;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -23,17 +24,19 @@ public class HomeController {
     TweetRepository tweetRepository;
 
     @RequestMapping("/user/{id}/tweets")
-    public String userTweets(@PathVariable Long id, Model model){
+    public String userTweets(@PathVariable Long id, Model model, HttpServletRequest request){
         List<Tweet> tweets = tweetRepository.findAllByUserId(id);
         model.addAttribute("tweets", tweets);
+        model.addAttribute("request", request);
         return "tweetList";
     }
 
     @RequestMapping("/user/search-tweets")
-    public String searchedTweets(Model model){
-        String titleStart = "tit";
+    public String searchedTweets(Model model, HttpServletRequest request){
+        String titleStart = "tit%";
         List<Tweet> tweets = tweetRepository.findAllByTitleStartingWithOrderByCreatedDesc(titleStart);
         model.addAttribute(tweets);
+        model.addAttribute("request", request);
         return "tweetList";
     }
 }

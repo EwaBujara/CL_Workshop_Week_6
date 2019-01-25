@@ -7,5 +7,9 @@
 </head>
 <body>
 <p>Exam 6</p>
+
+<a href="${pageContext.request.contextPath}/user/1/tweets">Tweet By ID:</a>|
+<a href="${pageContext.request.contextPath}/user/search-tweets">Tweet Search by title starting with "tit":</a>|
+
 </body>
 </html>

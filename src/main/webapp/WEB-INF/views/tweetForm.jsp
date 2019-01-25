@@ -17,13 +17,12 @@
 </head>
 <body>
 
+    <form:hidden path="id" />
 
-<form:form method="post"
+    <form:form method="post"
            action="${pageContext.request.contextPath}/tweet/save"
            modelAttribute="tweet"
            cssClass="container col-6" >
-
-    <form:hidden path="id" />
 
     <form:select path="user">
         <form:options items="${users}"

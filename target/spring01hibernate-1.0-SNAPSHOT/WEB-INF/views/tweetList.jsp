@@ -6,6 +6,12 @@
     <title>Tweet List</title>
 </head>
 <body>
-
+<ul>
+    <c:forEach items="${tweets}" var="tweet">
+        <li>
+            <h2>${tweet.title} ${tweet.tweetText}</h2>
+        </li>
+    </c:forEach>
+</ul>
 </body>
 </html>
