@@ -8,14 +8,15 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.User;
 import pl.coderslab.repository.UserRepository;
 import pl.coderslab.service.UserService;
-import pl.coderslab.validator.UserValidator;
+import pl.coderslab.validator.NewUserValidator;
+import pl.coderslab.validator.UserLogValidator;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-public class UserRegistrationAndLoginController {
+public class UserController {
 
     @Autowired
     UserRepository userRepository;
@@ -24,7 +25,10 @@ public class UserRegistrationAndLoginController {
     UserService userService;
 
     @Autowired
-    private UserValidator userValidator;
+    private NewUserValidator newUserValidator;
+
+    @Autowired
+    private UserLogValidator userLogValidator;
 
 
     @GetMapping("/registration")
@@ -38,7 +42,8 @@ public class UserRegistrationAndLoginController {
     public String registration(@ModelAttribute("userForm") User userForm,
                                BindingResult bindingResult,
                                HttpSession session) {
-        userValidator.validate(userForm, bindingResult);
+
+        newUserValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
             return "user/registration";
@@ -59,22 +64,19 @@ public class UserRegistrationAndLoginController {
     }
 
     @PostMapping("login")
-    public String login(
-            @ModelAttribute("userLog") User userLog,
-            HttpSession session){
+    public String login(@ModelAttribute("userLog") User userLog,
+                        BindingResult bindingResult,
+                        HttpSession session){
 
-        return "";
+        userLogValidator.validate(userLog, bindingResult);
+
+        if (bindingResult.hasErrors()){
+            return "user/login";
+        }
+
+        session.setAttribute("currentUser", userRepository.findByEmail(userLog.getEmail()));
+        return "meow/list";
     }
-//    @GetMapping(value = "/login")
-//    public String login(Model model, String error, String logout) {
-//        if (error != null)
-//            model.addAttribute("error", "Your username and/or password is invalid.");
-//
-//        if (logout != null)
-//            model.addAttribute("message", "You have been logged out successfully.");
-//
-//        return "login";
-//    }
 
 
     @GetMapping("/withoutLogin")

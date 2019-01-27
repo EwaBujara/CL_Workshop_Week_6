@@ -9,7 +9,7 @@ import pl.coderslab.entity.User;
 import pl.coderslab.service.UserService;
 
 @Component
-public class UserValidator implements Validator {
+public class NewUserValidator implements Validator {
 
     @Autowired
     private UserService userService;

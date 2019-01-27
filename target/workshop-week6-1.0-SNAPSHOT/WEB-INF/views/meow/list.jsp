@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Tweet List</title>
+    <title>Meows List</title>
     <%@include file="/WEB-INF/views/header.jsp"%>
 <body class="p-3 mb-2 bg-info text-white">
 <ul>

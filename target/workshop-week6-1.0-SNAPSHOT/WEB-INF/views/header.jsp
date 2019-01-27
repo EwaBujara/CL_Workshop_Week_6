@@ -11,7 +11,7 @@
     <a class="btn btn-info float-right" href="http://localhost:8080/home">Log OUT</a>
     </c:if>
     <c:if test="${currentUser == null}">
-        <a class="btn btn-info float-right" href="http://localhost:8080/home">Sign In</a>
+        <a class="btn btn-info float-right" href="http://localhost:8080/user/login">Sign In</a>
     </c:if>
     <p></p>
     <%--<a class="btn btn-info" href="http://localhost:8080/home">Home</a>--%>

@@ -15,6 +15,9 @@
         }
     </style>
     <%--<%@include file="/WEB-INF/views/header.jsp"%>--%>
+    <div class="p-3 mb-2 bg-dark text-white">
+        <h3 class="text-center">Join Meower community</h3>
+    </div>
 </head>
 <body class="p-3 mb-2 bg-info text-white">
 
@@ -43,6 +46,8 @@
 
     <input type="submit" value="Send" class="btn btn-dark">
 </form:form>
+
+
 
 </body>
 <%@include file="/WEB-INF/views/footer.jsp"%>
