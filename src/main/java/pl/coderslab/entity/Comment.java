@@ -1,6 +1,9 @@
 package pl.coderslab.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
@@ -17,6 +20,8 @@ public class Comment {
     @ManyToOne
     private Meow meow;
 
+    @NotEmpty
+    @Size(max = 60)
     private String text;
 
     private LocalDate created = LocalDate.now();
@@ -54,5 +59,13 @@ public class Comment {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDate created) {
+        this.created = created;
     }
 }

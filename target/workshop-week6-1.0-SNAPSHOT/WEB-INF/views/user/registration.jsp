@@ -14,7 +14,6 @@
             width: 100%;
         }
     </style>
-    <%--<%@include file="/WEB-INF/views/header.jsp"%>--%>
     <div class="p-3 mb-2 bg-dark text-white">
         <h3 class="text-center">Join Meower community</h3>
     </div>
@@ -26,8 +25,6 @@
            action="${pageContext.request.contextPath}/user/registration"
            modelAttribute="userForm"
            cssClass="container col-6" >
-
-    <%--<form:hidden path="id" />--%>
 
     <form:input path="username" placeholder="Username" cssClass="form-input"/>
     <form:errors path="username" cssClass="alert alert-danger" element="div"/>

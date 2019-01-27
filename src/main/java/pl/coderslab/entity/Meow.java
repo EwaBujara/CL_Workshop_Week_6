@@ -17,11 +17,11 @@ public class Meow {
     private Long id;
 
     @NotEmpty
-    @Size(min=5, max = 50)
+    @Size(max = 50)
     private String title;
 
     @NotEmpty
-    @Size(max = 160)
+    @Size(max = 140)
     private String meowText;
 
     LocalDate created = LocalDate.now();
@@ -29,7 +29,7 @@ public class Meow {
     @ManyToOne
     private User user;
 
-    @OneToMany(mappedBy = "meow")
+    @OneToMany(mappedBy = "meow", fetch = FetchType.EAGER)
     private List<Comment> comments = new ArrayList<>();
 
 

@@ -24,15 +24,14 @@
     <h4 class="text-center container col-6">${meow.meowText}</h4>
 </div>
 
-<a class="btn btn-dark float-right" href="http://localhost:8080/meow/">Add new comment</a>
-<h5>Comments:</h5>
+<a class="btn btn-dark float-right" href="http://localhost:8080/comment/add/${meow.id}">Add new comment</a>
+<h5>Comments (${comments.size()}):</h5>
 
 <table class="table table-striped">
     <tr>
         <th>Author</th>
         <th>Created</th>
         <th>Comment</th>
-        <%--<th>Actions</th>--%>
     </tr>
     <c:forEach items="${comments}" var="comment">
         <tr>

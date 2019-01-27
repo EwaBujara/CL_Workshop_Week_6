@@ -33,7 +33,7 @@ public class User {
 
     private String description;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Meow> meows = new ArrayList<>();
 
 

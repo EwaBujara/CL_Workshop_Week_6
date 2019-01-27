@@ -49,11 +49,19 @@ public class MeowController {
         return "redirect:"+request.getContextPath()+"/meow/list";
     }
 
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public String showAll(Model model){
         model.addAttribute("meows", meowRepository.findAll());
         return "meow/list";
     }
+
+    @GetMapping("/list/{id}")
+    public String showAll(Model model,@PathVariable Long id){
+        User user = userRepository.findOne(id);
+        model.addAttribute("meows",meowRepository.findAllByUserOrderByCreatedDesc(user));
+        return "meow/list";
+    }
+
 
     @GetMapping("/meow/{id}")
     public String showMeow(@PathVariable Long id, Model model){
@@ -63,7 +71,7 @@ public class MeowController {
         return "meow/meow";
     }
 
-    @ModelAttribute("meows")
-    public List<User> usersList(){return userRepository.findAll();}
+//    @ModelAttribute("meows")
+//    public List<User> usersList(){return userRepository.findAll();}
 }
 
