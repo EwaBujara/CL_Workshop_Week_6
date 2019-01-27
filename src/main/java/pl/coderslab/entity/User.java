@@ -1,10 +1,6 @@
 package pl.coderslab.entity;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +35,13 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Meow> meows = new ArrayList<>();
+
+
+    @OneToMany
+    private List<PrivateMeow> sentPrivateMeows = new ArrayList<>();
+
+    @OneToMany
+    private List<PrivateMeow> receivedPrivateMeows = new ArrayList<>();
 
     private boolean enabled;
 
@@ -115,5 +118,21 @@ public class User {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<PrivateMeow> getSentPrivateMeows() {
+        return sentPrivateMeows;
+    }
+
+    public void setSentPrivateMeows(List<PrivateMeow> sentPrivateMeows) {
+        this.sentPrivateMeows = sentPrivateMeows;
+    }
+
+    public List<PrivateMeow> getReceivedPrivateMeows() {
+        return receivedPrivateMeows;
+    }
+
+    public void setReceivedPrivateMeows(List<PrivateMeow> receivedPrivateMeows) {
+        this.receivedPrivateMeows = receivedPrivateMeows;
     }
 }

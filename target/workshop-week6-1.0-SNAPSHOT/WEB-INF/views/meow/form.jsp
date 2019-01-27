@@ -18,19 +18,19 @@
 
 <body class="p-3 mb-2 bg-info text-white">
 
-    <form:hidden path="id" />
+    <%--<form:hidden path="id" />--%>
 
     <form:form method="post"
-           action="${pageContext.request.contextPath}/meow/save"
+           action="${pageContext.request.contextPath}/meow/add"
            modelAttribute="meow"
            cssClass="container col-6" >
 
-    <form:select path="user">
-        <form:options items="${users}"
-                      itemValue="id"
-                      itemLabel="username" />
-    </form:select>
-    <form:errors path="user"/>
+    <%--<form:select path="user">--%>
+        <%--<form:options items="${users}"--%>
+                      <%--itemValue="id"--%>
+                      <%--itemLabel="username" />--%>
+    <%--</form:select>--%>
+    <%--<form:errors path="user"/>--%>
 
     <form:input path="title" placeholder="Title" cssClass="form-input"/>
     <form:errors path="title" cssClass="alert alert-danger" element="div"/>
@@ -38,7 +38,7 @@
     <form:input path="meowText" placeholder="Meow Text" cssClass="form-input"/>
     <form:errors path="meowText" cssClass="alert alert-danger" element="div"/>
 
-    <input type="submit" value="Send"  class="btn btn-success">
+    <input type="submit" value="Send"  class="btn btn-dark">
 </form:form>
 
 </body>

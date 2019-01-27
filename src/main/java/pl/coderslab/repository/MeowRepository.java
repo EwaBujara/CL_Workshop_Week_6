@@ -5,7 +5,7 @@ import pl.coderslab.entity.Meow;
 
 import java.util.List;
 
-public interface TweetRepository extends JpaRepository<Meow, Long> {
+public interface MeowRepository extends JpaRepository<Meow, Long> {
 
 //    Tweetów dla zadanego id użytkownika.
     List<Meow> findAllByUserId(Long id);

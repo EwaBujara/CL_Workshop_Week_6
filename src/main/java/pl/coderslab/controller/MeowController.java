@@ -4,16 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.Meow;
 import pl.coderslab.entity.User;
-import pl.coderslab.repository.TweetRepository;
+import pl.coderslab.repository.CommentRepository;
+import pl.coderslab.repository.MeowRepository;
 import pl.coderslab.repository.UserRepository;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -22,10 +21,13 @@ import java.util.List;
 public class MeowController {
 
     @Autowired
-    TweetRepository tweetRepository;
+    MeowRepository meowRepository;
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    CommentRepository commentRepository;
 
     @GetMapping("/add")
     public String add(Model model){
@@ -33,17 +35,35 @@ public class MeowController {
         return "meow/form";
     }
 
-    @PostMapping("/save")
-    public String add(@Valid Meow meow, BindingResult errors, HttpServletRequest request){
+    @PostMapping("/add")
+    public String add(@Valid Meow meow, BindingResult errors,
+                      HttpServletRequest request,
+                      HttpSession session){
 
         if(errors.hasErrors()){
             return "meow/form";
         }
-        tweetRepository.save(meow);
+        User user = (User)session.getAttribute("currentUser");
+        meow.setUser(user);
+        meowRepository.save(meow);
         return "redirect:"+request.getContextPath()+"/meow/list";
     }
 
-    @ModelAttribute("users")
+    @RequestMapping("/list")
+    public String showAll(Model model){
+        model.addAttribute("meows", meowRepository.findAll());
+        return "meow/list";
+    }
+
+    @GetMapping("/meow/{id}")
+    public String showMeow(@PathVariable Long id, Model model){
+        model.addAttribute("meow", meowRepository.findOne(id));
+        Meow meow = meowRepository.findOne(id);
+        model.addAttribute("comments",commentRepository.findAllByMeowOrderByCreatedDesc(meow));
+        return "meow/meow";
+    }
+
+    @ModelAttribute("meows")
     public List<User> usersList(){return userRepository.findAll();}
 }
 

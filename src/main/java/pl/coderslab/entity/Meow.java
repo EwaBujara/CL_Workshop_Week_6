@@ -5,6 +5,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "meows")
@@ -26,6 +28,10 @@ public class Meow {
 
     @ManyToOne
     private User user;
+
+    @OneToMany(mappedBy = "meow")
+    private List<Comment> comments = new ArrayList<>();
+
 
     public Meow() {
     }
@@ -68,6 +74,14 @@ public class Meow {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     @Override

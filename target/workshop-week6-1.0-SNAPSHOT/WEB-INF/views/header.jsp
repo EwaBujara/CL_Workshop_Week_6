@@ -7,17 +7,21 @@
 <title>Home Page</title>
 <div class="p-3 mb-2 bg-dark text-white">
     <c:if test="${currentUser != null}">
-    <p class="text-right">Welcome, ${currentUser.getUsername()} !</p>
+    <p class="text-right">Welcome, ${currentUser.getUsername()}</p>
     <a class="btn btn-info float-right" href="http://localhost:8080/home">Log OUT</a>
+        <p></p>
+        <a class="btn btn-info" href="http://localhost:8080/meow/add">Add New Meow</a>
+        <a class="btn btn-info" href="http://localhost:8080/meow/list">Meows List</a>
+        <a class="btn btn-info" href="http://localhost:8080/user/list">Users List</a>
+        <a class="btn btn-info" href="http://localhost:8080/user/box">Your Meow-box</a>
+        <a class="btn btn-info" href="http://localhost:8080/user/account">Your profile</a>
     </c:if>
+
     <c:if test="${currentUser == null}">
         <a class="btn btn-info float-right" href="http://localhost:8080/user/login">Sign In</a>
+        <p></p>
     </c:if>
-    <p></p>
-    <%--<a class="btn btn-info" href="http://localhost:8080/home">Home</a>--%>
-    <a class="btn btn-info" href="http://localhost:8080/meow/add">Add New Meow</a>
-    <%--<a class="btn btn-info" href="http://localhost:8080/">Exercises</a>--%>
-    <%--<a class="btn btn-info" href="http://localhost:8080/">AdminPage</a>--%>
+
 
 </div>
 </head>

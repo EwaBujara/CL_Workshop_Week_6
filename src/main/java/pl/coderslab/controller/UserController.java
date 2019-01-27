@@ -1,6 +1,7 @@
 package pl.coderslab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,7 @@ import pl.coderslab.service.UserService;
 import pl.coderslab.validator.NewUserValidator;
 import pl.coderslab.validator.UserLogValidator;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -66,6 +68,7 @@ public class UserController {
     @PostMapping("login")
     public String login(@ModelAttribute("userLog") User userLog,
                         BindingResult bindingResult,
+                        HttpServletRequest request,
                         HttpSession session){
 
         userLogValidator.validate(userLog, bindingResult);
@@ -75,23 +78,30 @@ public class UserController {
         }
 
         session.setAttribute("currentUser", userRepository.findByEmail(userLog.getEmail()));
-        return "meow/list";
+        return "redirect:"+request.getContextPath()+"/meow/list";
     }
 
 
     @GetMapping("/withoutLogin")
-    public String withoutLogin(){
-        return "meow/list";
+    public String withoutLogin(HttpServletRequest request){
+
+        return "redirect:"+request.getContextPath()+"/meow/list";
     }
 
 
-    @RequestMapping("/all")
+    @RequestMapping("/list")
     public String showAll(Model model){
         model.addAttribute("users", userRepository.findAll());
         return "user/list";
     }
 
-    @GetMapping("/add/{id}")
+
+    @GetMapping("/account")
+    public String showDetails(HttpServletRequest request){
+        return "user/account";
+    }
+
+    @GetMapping("/edit/{id}")
     public String add(Model model, @PathVariable Long id){
         model.addAttribute("user", userRepository.findOne(id));
         return "user/add";
