@@ -7,27 +7,27 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "tweeter_tweet")
-public class Tweet {
+@Table(name = "meows")
+public class Meow {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  //klucz główny
+    private Long id;
 
     @NotEmpty
     @Size(min=5, max = 50)
-    private String title;  //minimalna długość 5 znaków, maksymalna długość 50, pole wymagane
+    private String title;
 
     @NotEmpty
     @Size(max = 160)
-    private String tweetText; //pole wymagane, maksymalna długość 160 znaków
+    private String meowText;
 
-    LocalDate created = LocalDate.now(); //(data dodania)
+    LocalDate created = LocalDate.now();
 
     @ManyToOne
     private User user;
 
-    public Tweet() {
+    public Meow() {
     }
 
     public Long getId() {
@@ -46,12 +46,12 @@ public class Tweet {
         this.title = title;
     }
 
-    public String getTweetText() {
-        return tweetText;
+    public String getMeowText() {
+        return meowText;
     }
 
-    public void setTweetText(String tweetText) {
-        this.tweetText = tweetText;
+    public void setMeowText(String meowText) {
+        this.meowText = meowText;
     }
 
     public LocalDate getCreated() {

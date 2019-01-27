@@ -11,7 +11,7 @@
 <ul>
     <c:forEach items="${users}" var="user">
         <li>
-            <h2>${user.firstName} ${user.lastName}</h2>
+            <h2>${user.username} ${user.email}</h2>
             <p>
                 <a href="${pageContext.request.contextPath}/user/add/${author.id}">Edit</a>|
                 <a href="${pageContext.request.contextPath}/user/delete/${author.id}">Delete</a>
@@ -20,4 +20,5 @@
     </c:forEach>
 </ul>
 </body>
+<%@include file="/WEB-INF/views/footer.jsp"%>
 </html>

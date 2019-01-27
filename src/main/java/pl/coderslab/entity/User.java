@@ -4,28 +4,43 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "tweeter_user")
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  //klucz główny
+    private Long id;
 
-    @NotEmpty
-    private String firstName;  //pole wymagane
+//    @NotEmpty
+//    @Size(min = 6, max = 32)
+//    @Column(unique = true)
+    private String username;
 
-    @NotEmpty
-    private String lastName; //pole wymagane
+//    @Email
+//    @NotEmpty
+//    @Column(unique = true)
+    private String email;
 
-    @Email
-    private String email; //walidacja adresu email, pole nie wymagane
+//    @Size(min = 6, max = 32)
+//    @NotEmpty
+    private String password;
+
+    @Transient
+    private String passwordConfirm;
+
+    private String location;
+
+    private String description;
 
     @OneToMany(mappedBy = "user")
-    private List<Tweet> tweets = new ArrayList<>();
+    private List<Meow> meows = new ArrayList<>();
+
+    private boolean enabled;
 
     public User() {
     }
@@ -38,20 +53,12 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -62,16 +69,51 @@ public class User {
         this.email = email;
     }
 
-    public List<Tweet> getTweets() {
-        return tweets;
+    public String getPassword() {
+        return password;
     }
 
-    public void setTweets(List<Tweet> tweets) {
-        this.tweets = tweets;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return lastName;
+    public List<Meow> getMeows() {
+        return meows;
+    }
+
+    public void setMeows(List<Meow> meows) {
+        this.meows = meows;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

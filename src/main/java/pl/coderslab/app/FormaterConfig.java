@@ -7,7 +7,8 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import pl.coderslab.converter.TweetConverter;
+import pl.coderslab.converter.LocalDateConverter;
+import pl.coderslab.converter.MeowConverter;
 import pl.coderslab.converter.UserConverter;
 
 @Configuration
@@ -17,13 +18,16 @@ import pl.coderslab.converter.UserConverter;
 public class FormaterConfig implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(getTweetConverter());
+        registry.addConverter(getMeowConverter());
         registry.addConverter(getUserConverter());
+        registry.addConverter(getLocalDateConverter());
     }
 
     @Bean
-    public TweetConverter getTweetConverter(){ return new TweetConverter(); }
+    public MeowConverter getMeowConverter(){ return new MeowConverter(); }
     @Bean
     public UserConverter getUserConverter(){return  new UserConverter(); }
+    @Bean
+    public LocalDateConverter getLocalDateConverter(){return new  LocalDateConverter();}
 }
 

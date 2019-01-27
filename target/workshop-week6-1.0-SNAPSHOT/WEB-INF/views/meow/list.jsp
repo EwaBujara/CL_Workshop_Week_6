@@ -4,14 +4,15 @@
 <html>
 <head>
     <title>Tweet List</title>
-</head>
-<body>
+    <%@include file="/WEB-INF/views/header.jsp"%>
+<body class="p-3 mb-2 bg-info text-white">
 <ul>
-    <c:forEach items="${tweets}" var="tweet">
+    <c:forEach items="${meows}" var="meow">
         <li>
-            <h2>${tweet.title} ${tweet.tweetText}</h2>
+            <h2>${meow.title} ${meow.meowText}</h2>
         </li>
     </c:forEach>
 </ul>
 </body>
+<%@include file="/WEB-INF/views/footer.jsp"%>
 </html>

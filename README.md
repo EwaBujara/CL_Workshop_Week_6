@@ -72,7 +72,7 @@ Tweet (nazwa tabeli `tweeter_tweet`):
 
 2. Nazwy kolumn mają pozostać domyślne.
 3. Połącz te modele relacją jeden do wielu (dwukierunkową).
-4. W encji User pole odnoszące się do wielu tweetów nazwij ```tweets```.
+4. W encji User pole odnoszące się do wielu tweetów nazwij ```meows```.
 5. W encji Tweet analogicznie pole odnoszące się do jednej encji `User` nazwij ```user```.
 
 ### Zadanie 3 (4 pkt)
@@ -83,23 +83,23 @@ Tweet (nazwa tabeli `tweeter_tweet`):
 - Tweetów dla zadanego id użytkownika. 
 Utwórz akcję wywołującą tą metodę, wyświetl tweety w widoku.
  
-Akcja ma być dostępna pod adresem `/user/{id}/tweets`. Dodaj link do strony głównej. `id` - ma być parametrem adresu.
+Akcja ma być dostępna pod adresem `/user/{id}/meows`. Dodaj link do strony głównej. `id` - ma być parametrem adresu.
 
 - Tweetów o tytule, który zaczyna się od ciągu znaków, np. `Programo` , posortowane od najnowszego względem daty utworzenia.
 Ciąg znaków do wyszukiwania ma być określony jako parametr.
 
 Utwórz akcję wywołującą tą metodę, wyświetl tweety w widoku.
 
-Akcja ma być dostępna pod adresem `/user/search-tweets`. Dodaj link do strony głównej.
+Akcja ma być dostępna pod adresem `/user/search-meows`. Dodaj link do strony głównej.
  
 
 ### Zadanie 4 (4 pkt)
 
 1. Utwórz kontrolery dla encji `User` z mapowaniem `/user`.
-2. Utwórz kontrolery dla encji `Tweet` z mapowaniem `/tweet`.
+2. Utwórz kontrolery dla encji `Tweet` z mapowaniem `/meow`.
 3. Utwórz akcje oraz formularz umożliwiające dodanie użytkownika, formularz ma być dostępny pod adresem `/user/add`.
 Sprawdzaj poprawność wprowadzanych danych. Dodaj link do strony głównej. 
-4. Utwórz akcje oraz formularz umożliwiające dodanie tweetu, formularz ma być dostępny pod adresem `/tweet/add` 
+4. Utwórz akcje oraz formularz umożliwiające dodanie tweetu, formularz ma być dostępny pod adresem `/meow/add` 
 (formularz ma posiadać możliwość wybrania użytkownika). Sprawdzaj poprawność wprowadzanych danych. Dodaj link do strony głównej.
 
 

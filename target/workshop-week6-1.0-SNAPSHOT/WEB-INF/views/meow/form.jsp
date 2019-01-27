@@ -5,7 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Add New Meow</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
         input, select{
@@ -14,31 +14,33 @@
             width: 100%;
         }
     </style>
-</head>
-<body>
+    <%@include file="/WEB-INF/views/header.jsp"%>
+
+<body class="p-3 mb-2 bg-info text-white">
 
     <form:hidden path="id" />
 
     <form:form method="post"
-           action="${pageContext.request.contextPath}/tweet/save"
-           modelAttribute="tweet"
+           action="${pageContext.request.contextPath}/meow/save"
+           modelAttribute="meow"
            cssClass="container col-6" >
 
     <form:select path="user">
         <form:options items="${users}"
                       itemValue="id"
-                      itemLabel="lastName" />
+                      itemLabel="username" />
     </form:select>
     <form:errors path="user"/>
 
     <form:input path="title" placeholder="Title" cssClass="form-input"/>
     <form:errors path="title" cssClass="alert alert-danger" element="div"/>
 
-    <form:input path="tweetText" placeholder="Tweet Text" cssClass="form-input"/>
-    <form:errors path="tweetText" cssClass="alert alert-danger" element="div"/>
+    <form:input path="meowText" placeholder="Meow Text" cssClass="form-input"/>
+    <form:errors path="meowText" cssClass="alert alert-danger" element="div"/>
 
-    <input type="submit"  class="btn btn-success">
+    <input type="submit" value="Send"  class="btn btn-success">
 </form:form>
 
 </body>
+<%@include file="/WEB-INF/views/footer.jsp"%>
 </html>

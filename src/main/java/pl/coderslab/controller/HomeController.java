@@ -2,41 +2,17 @@ package pl.coderslab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import pl.coderslab.entity.Tweet;
 import pl.coderslab.repository.TweetRepository;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
 
     @GetMapping("/home")
-    public String homeSender(){
+    public String homeSender(HttpSession session){
+        session.invalidate();
         return "index";
-    }
-
-    @Autowired
-    TweetRepository tweetRepository;
-
-    @RequestMapping("/user/{id}/tweets")
-    public String userTweets(@PathVariable Long id, Model model, HttpServletRequest request){
-        List<Tweet> tweets = tweetRepository.findAllByUserId(id);
-        model.addAttribute("tweets", tweets);
-        model.addAttribute("request", request);
-        return "tweetList";
-    }
-
-    @RequestMapping("/user/search-tweets")
-    public String searchedTweets(Model model, HttpServletRequest request){
-        String titleStart = "tit%";
-        List<Tweet> tweets = tweetRepository.findAllByTitleStartingWithOrderByCreatedDesc(titleStart);
-        model.addAttribute(tweets);
-        model.addAttribute("request", request);
-        return "tweetList";
     }
 }

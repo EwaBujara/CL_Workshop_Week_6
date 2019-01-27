@@ -1,21 +1,20 @@
 package pl.coderslab.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.coderslab.entity.Tweet;
+import pl.coderslab.entity.Meow;
 
-import java.awt.print.Book;
 import java.util.List;
 
-public interface TweetRepository extends JpaRepository<Tweet, Long> {
+public interface TweetRepository extends JpaRepository<Meow, Long> {
 
 //    Tweetów dla zadanego id użytkownika.
-    List<Tweet> findAllByUserId(Long id);
+    List<Meow> findAllByUserId(Long id);
 
 //    Tweetów o tytule, który zaczyna się od ciągu znaków,
 //    np. Programo , posortowane od najnowszego względem daty utworzenia.
 //    Ciąg znaków do wyszukiwania ma być określony jako parametr.
 
-    List<Tweet> findAllByTitleStartingWithOrderByCreatedDesc(String titleStart);
+    List<Meow> findAllByTitleStartingWithOrderByCreatedDesc(String titleStart);
 
 
 }
