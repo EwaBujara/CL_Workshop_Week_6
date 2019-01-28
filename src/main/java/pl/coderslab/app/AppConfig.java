@@ -66,10 +66,6 @@ public class AppConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public UserLogValidator logValidator(){return new UserLogValidator();}
-
-
-    @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasenames("ValidationMessages");

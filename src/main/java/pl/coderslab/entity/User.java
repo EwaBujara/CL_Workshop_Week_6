@@ -37,10 +37,10 @@ public class User {
     private List<Meow> meows = new ArrayList<>();
 
 
-    @OneToMany
+    @OneToMany(mappedBy = "author")
     private List<PrivateMeow> sentPrivateMeows = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "recipient")
     private List<PrivateMeow> receivedPrivateMeows = new ArrayList<>();
 
     private boolean enabled;

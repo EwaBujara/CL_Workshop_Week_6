@@ -23,7 +23,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean verify(User user) {
-        return BCrypt.checkpw(user.getPassword(), userRepository.findByEmail(user.getEmail()).getPassword());
+        if(userRepository.findByEmail(user.getEmail())!=null){
+
+            return BCrypt.checkpw(user.getPassword(), (userRepository.findByEmail(user.getEmail())).getPassword());
+        }
+        else return false;
     }
 
     @Override

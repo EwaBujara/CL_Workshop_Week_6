@@ -2,12 +2,14 @@ package pl.coderslab.validator;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import pl.coderslab.entity.User;
 import pl.coderslab.service.UserService;
 
+@Component
 public class UserLogValidator implements Validator {
 
     @Autowired
@@ -29,7 +31,7 @@ public class UserLogValidator implements Validator {
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-        if(userService.verify(user)){
+        if(!userService.verify(user)){
             errors.rejectValue("password", "nonMatching.userLog.password");
         }
     }
