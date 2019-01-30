@@ -40,21 +40,23 @@ public class CommentController {
         return "comment/form";
     }
 
-    @PostMapping("/add/{id}")
+    @PostMapping("/add/{meowId}")
     public String add(@Valid Comment comment, BindingResult errors,
                       HttpServletRequest request,
-                      @PathVariable Long id,
+                      @PathVariable Long meowId,
                       HttpSession session){
+
+        User user = (User)session.getAttribute("currentUser");
+        comment.setUser(user);
+        Meow meow = meowRepository.findOne(meowId);
+        comment.setMeow(meow);
+//        commentService.add(comment,meow);
+
 
         if(errors.hasErrors()){
             return "comment/form";
         }
-        User user = (User)session.getAttribute("currentUser");
-        comment.setUser(user);
-        Meow meow = meowRepository.findOne(id);
-        comment.setMeow(meow);
-        commentService.add(comment,meow);
-//        commentRepository.save(comment);
-        return "redirect:"+request.getContextPath()+"/meow/meow/"+id;
+        commentRepository.save(comment);
+        return "redirect:"+request.getContextPath()+"/meow/meow/"+meowId;
     }
 }

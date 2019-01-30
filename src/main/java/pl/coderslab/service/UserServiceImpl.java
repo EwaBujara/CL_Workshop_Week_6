@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.entity.User;
 import pl.coderslab.repository.UserRepository;
 
+import javax.servlet.http.HttpSession;
 
 
 @Service
@@ -29,6 +30,16 @@ public class UserServiceImpl implements UserService {
         }
         else return false;
     }
+
+    @Override
+    public void delete(HttpSession session, Long id) {
+        User user = userRepository.findOne(id);
+        User currentUser = (User) session.getAttribute("currentUser");
+        if(currentUser!=null && user!=null && id.longValue()==currentUser.getId().longValue()){
+            userRepository.delete(user);
+        }
+    }
+
 
     @Override
     public User findByUsername(String username) {

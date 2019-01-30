@@ -107,11 +107,13 @@ public class UserController {
         return "user/add";
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable Long id){
-        User user = userRepository.findOne(id);
-        userRepository.delete(user);
-        return "user/list";
+    @RequestMapping("/delete/{id}")
+    public String delete(
+            @PathVariable Long id,
+            HttpServletRequest request,
+            HttpSession session){
+        userService.delete(session,id);
+        return "redirect:"+request.getContextPath()+"/home";
     }
 
     @ModelAttribute("users")

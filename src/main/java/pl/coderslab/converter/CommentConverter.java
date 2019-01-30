@@ -16,13 +16,3 @@ public class CommentConverter implements Converter <String, Comment> {
         return commentRepository.findOne(Long.parseLong(s));
     }
 }
-
-//public class UserConverter implements Converter<String, User> {
-//
-//    @Autowired
-//    UserRepository userRepository;
-//    @Override
-//    public User convert(String s) {
-//        return userRepository.findOne(Long.parseLong(s));
-//    }
-//}

@@ -15,17 +15,7 @@
 </c:if>
 
 <c:if test="${currentUser != null}">
-<%--<table class="table table-striped">--%>
-    <%--<tr>--%>
-        <%--<th>Name</th>--%>
-        <%--<th>Meows</th>--%>
-    <%--</tr>--%>
-    <%--<tr>--%>
-        <%--<td>${currentUser.username}</td>--%>
-        <%--<td><a class="btn btn-dark" href="http://localhost:8080/meow/list/${currentUser.id}">${currentUser.meows.size()}</a></td>--%>
-    <%--</tr>--%>
-<%--</table>--%>
-    <%--<p></p>--%>
+
 <table class="table table-striped">
     <tr>
         <th>Name</th>
@@ -34,14 +24,14 @@
         <th>Actions</th>
     </tr>
     <c:forEach items="${users}" var="user">
-        <c:if test="${currentUser.username != user.username}">
+        <%--<c:if test="${currentUser.username != user.username}">--%>
         <tr>
             <td>${user.username}</td>
             <td>${user.email}</td>
             <td><a class="btn btn-dark" href="http://localhost:8080/meow/list/${user.id}">${user.meows.size()}</a></td>
             <td><a class="btn btn-dark" href="http://localhost:8080/home">Send message</a></td>
         </tr>
-        </c:if>
+        <%--</c:if>--%>
     </c:forEach>
 </table>
 </c:if>

@@ -29,18 +29,18 @@ public class User {
     @Transient
     private String passwordConfirm;
 
-    private String location;
+    private String localisation;
 
     private String description;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Meow> meows = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<PrivateMeow> sentPrivateMeows = new ArrayList<>();
 
-    @OneToMany(mappedBy = "recipient")
+    @OneToMany(mappedBy = "recipient", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<PrivateMeow> receivedPrivateMeows = new ArrayList<>();
 
     private boolean enabled;
@@ -104,12 +104,12 @@ public class User {
         this.passwordConfirm = passwordConfirm;
     }
 
-    public String getLocation() {
-        return location;
+    public String getLocalisation() {
+        return localisation;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocalisation(String location) {
+        this.localisation = location;
     }
 
     public String getDescription() {

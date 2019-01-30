@@ -25,14 +25,20 @@
         <th>Action</th>
     </tr>
             <tr>
-                <td>${currentUser.username}</td>
-                <td>${currentUser.email}</td>
-                <td><a class="btn btn-dark" href="http://localhost:8080/meow/list/${currentUser.id}">${currentUser.meows.size()}</a></td>
-                <td>${currentUser.location}</td>
-                <td>${currentUser.description}</td>
-                <td><a class="btn btn-dark" href="http://localhost:8080/user/edit/+${currentUser.id}">Edit</a>
-                <a class="btn btn-dark" href="http://localhost:8080/user/delete/+${currentUser.id}">Delete</a>
+                <td>${user.username}</td>
+                <td>${user.email}</td>
+                <td><a class="btn btn-dark" href="http://localhost:8080/meow/list/${user.id}">${user.meows.size()}</a></td>
+                <td>${user.localisation}</td>
+                <td>${user.description}</td>
+                <td>
+                    <c:if test="${user.id}">
+                    <a class="btn btn-dark" href="http://localhost:8080/user/edit/${user.id}">Edit</a>
+                        <a class="btn btn-dark" href="http://localhost:8080/user/delete/${user.id}">Delete</a>
+                    </c:if>
+                    <a class="btn btn-dark" href="http://localhost:8080/user/delete/${user.id}">Send message</a>
+
                 </td>
+
             </tr>
 </table>
 </c:if>

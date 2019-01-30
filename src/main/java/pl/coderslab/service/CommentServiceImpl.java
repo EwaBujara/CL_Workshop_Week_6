@@ -14,10 +14,11 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     CommentRepository commentRepository;
 
-    @Override
-    public void add(Comment comment, Meow meow) {
-        List<Comment> comments = meow.getComments();
-        comments.add(comment);
-        commentRepository.save(comments);
-    }
+//    @Override
+//    public void add(Comment comment, Meow meow) {
+//        commentRepository.save(comment);
+//        List<Comment> comments = meow.getComments();
+//        comments.add(comment);
+//        meow.setComments(comments);
+//    }
 }
