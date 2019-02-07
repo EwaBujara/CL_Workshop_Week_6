@@ -3,14 +3,14 @@
 
 Task required to create **Tweeter**-like application.
 
-##Meower
+#Meower
 
 Functionalities:
 1. New User registration
 2. Sign in to application
-3. When sign in, user can:
+3. After signing in *User* can:
 * Add new Threads (`Meows`)
-* Add new comments to existing Threads
+* Add new Comments to existing Threads
 * Send private message (`Private Meow`) to other users
 
 Technologies:
