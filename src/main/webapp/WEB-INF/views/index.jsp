@@ -6,11 +6,11 @@
 <title></title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <div class="p-3 mb-2 bg-dark text-white">
-    <a class="btn btn-info" href="http://localhost:8080/user/login">Sign In</a>
-    <a class="btn btn-info" href="http://localhost:8080/user/registration">Sign Up</a>
+    <a class="btn btn-danger" href="http://localhost:8080/user/login">Sign In</a>
+    <a class="btn btn-success" href="http://localhost:8080/user/registration">Sign Up</a>
 </div>
 </head>
-<body class="p-3 mb-2 bg-info text-white">
+<body class="p-3 mb-2 bg-white text-white">
 
 <a class="btn btn-dark text-center" href="http://localhost:8080/user/withoutLogin">Enter without login</a>
 

@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Meows List</title>
+    <title>Private Meows Box</title>
     <%@include file="/WEB-INF/views/header.jsp"%>
 <body class="p-3 mb-2 bg-white text-dark">
 <table class="table table-striped">
@@ -16,14 +16,14 @@
         <th>Actions</th>
     </tr>
     <c:forEach items="${meows}" var="meow">
-            <tr>
-                <td>${meow.title}</td>
-                <td>${meow.user.username}</td>
-                <td>${meow.created}</td>
-                <td>${fn:substring(meow.meowText, 0, 40)}</td>
-                <td><a class="btn btn-dark" href="http://localhost:8080/meow/meow/${meow.id}">See more</a></td>
-            </tr>
-        
+        <tr>
+            <td>${meow.title}</td>
+            <td>${meow.user.username}</td>
+            <td>${meow.created}</td>
+            <td>${fn:substring(meow.meowText, 0, 40)}</td>
+            <td><a class="btn btn-dark" href="http://localhost:8080/meow/meow/${meow.id}">See more</a></td>
+        </tr>
+
     </c:forEach>
 </table>
 </body>

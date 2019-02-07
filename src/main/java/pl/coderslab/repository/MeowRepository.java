@@ -8,10 +8,7 @@ import java.util.List;
 
 public interface MeowRepository extends JpaRepository<Meow, Long> {
 
-    List<Meow> findAllByUserId(Long id);
-
     List<Meow> findAllByUserOrderByCreatedDesc(User user);
-//    List<Meow> findAllByTitleStartingWithOrderByCreatedDesc(String titleStart);
 
 
 }

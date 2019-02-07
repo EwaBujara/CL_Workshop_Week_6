@@ -5,7 +5,7 @@
 <head>
     <title>Users List</title>
     <%@include file="/WEB-INF/views/header.jsp"%>
-<body class="p-3 mb-2 bg-info text-white">
+<body class="p-3 mb-2 bg-white text-dark">
 
 <c:if test="${currentUser == null}">
     <div class="p-3 mb-2 bg-light text-dark">
@@ -24,14 +24,20 @@
         <th>Actions</th>
     </tr>
     <c:forEach items="${users}" var="user">
-        <%--<c:if test="${currentUser.username != user.username}">--%>
+
         <tr>
             <td>${user.username}</td>
             <td>${user.email}</td>
             <td><a class="btn btn-dark" href="http://localhost:8080/meow/list/${user.id}">${user.meows.size()}</a></td>
-            <td><a class="btn btn-dark" href="http://localhost:8080/home">Send message</a></td>
+                <c:if test="${currentUser.id != user.id}">
+            <td><a class="btn btn-dark" href="http://localhost:8080/home">Send Private Meow</a></td>
+                </c:if>
+            <c:if test="${currentUser.id == user.id}">
+                <td><a class="btn btn-dark" href="http://localhost:8080/user/account">Your profile</a></td>
+            </c:if>
+
         </tr>
-        <%--</c:if>--%>
+
     </c:forEach>
 </table>
 </c:if>

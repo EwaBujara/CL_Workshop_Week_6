@@ -5,7 +5,7 @@
 <head>
     <title>Meow</title>
     <%@include file="/WEB-INF/views/header.jsp"%>
-<body class="p-3 mb-2 bg-info text-white">
+<body class="p-3 mb-2 bg-white text-dark">
 
 <table class="table table-striped">
     <tr>

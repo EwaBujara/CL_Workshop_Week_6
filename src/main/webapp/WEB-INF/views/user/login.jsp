@@ -18,7 +18,7 @@
         <h3 class="text-center">Welcome back to Meower</h3>
     </div>
 </head>
-<body class="p-3 mb-2 bg-info text-white">
+<body class="p-3 mb-2 bg-white text-dark">
 
 <form:form method="post"
            action="${pageContext.request.contextPath}/user/login"

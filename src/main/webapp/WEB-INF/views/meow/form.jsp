@@ -16,7 +16,7 @@
     </style>
     <%@include file="/WEB-INF/views/header.jsp"%>
 
-<body class="p-3 mb-2 bg-info text-white">
+<body class="p-3 mb-2 bg-white text-dark">
 
 <c:if test="${currentUser == null}">
     <div class="p-3 mb-2 bg-light text-dark">

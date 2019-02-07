@@ -10,11 +10,11 @@
     <p class="text-right">Welcome, ${currentUser.getUsername()}</p>
     <a class="btn btn-info float-right" href="http://localhost:8080/home">Log OUT</a>
         <p></p>
-        <a class="btn btn-info" href="http://localhost:8080/meow/add">Add New Meow</a>
-        <a class="btn btn-info" href="http://localhost:8080/meow/list">Meows List</a>
+        <a class="btn btn-danger" href="http://localhost:8080/meow/add">Add New Meow</a>
+        <a class="btn btn-success" href="http://localhost:8080/meow/list">Meows List</a>
         <a class="btn btn-info" href="http://localhost:8080/user/list">Users List</a>
-        <a class="btn btn-info" href="http://localhost:8080/user/box">Your Meow-box</a>
-        <a class="btn btn-info" href="http://localhost:8080/user/account">Your profile</a>
+        <a class="btn btn-secondary" href="http://localhost:8080/user/box">Your Meow-box</a>
+        <a class="btn btn-primary" href="http://localhost:8080/user/account">Your profile</a>
     </c:if>
 
     <c:if test="${currentUser == null}">

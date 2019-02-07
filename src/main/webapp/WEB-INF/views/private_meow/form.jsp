@@ -5,7 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Add New Comment</title>
+    <title>Add New Private Meow</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
         input, textarea{
@@ -21,21 +21,30 @@
 <c:if test="${currentUser == null}">
     <div class="p-3 mb-2 bg-light text-dark">
         <h3 class="text-center">You have no access!</h3>
-        <p class="text-center">You must sign in</p>
+        <p class="text-center">You must be sign in</p>
     </div>
 </c:if>
 
 <c:if test="${currentUser != null}">
-<form:form method="post"
-           modelAttribute="comment"
-           action="${pageContext.request.contextPath}/comment/add/${comment.meow.id}"
-           cssClass="container col-6" >
+    <form:form method="post"
+               action="${pageContext.request.contextPath}/private_meow/add"
+               modelAttribute="meow"
+               cssClass="container col-6" >
 
-    <form:textarea path="text" placeholder="Your comment" cssClass="form-input"/>
-    <form:errors path="text" cssClass="alert alert-danger" element="div"/>
+        <form:select path="recipient">
+            <form:options items="${users}"
+                          itemValue="id"
+                          itemLabel="name" />
+        </form:select>
 
-    <input type="submit" value="Send"  class="btn btn-dark">
-</form:form>
+        <form:input path="title" placeholder="Title" cssClass="form-input"/>
+        <form:errors path="title" cssClass="alert alert-danger" element="div"/>
+
+        <form:textarea path="message" placeholder="Private Meow Text" cssClass="form-input"/>
+        <form:errors path="message" cssClass="alert alert-danger" element="div"/>
+
+        <input type="submit" value="Send"  class="btn btn-dark">
+    </form:form>
 </c:if>
 </body>
 <%@include file="/WEB-INF/views/footer.jsp"%>
