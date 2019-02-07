@@ -7,10 +7,7 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import pl.coderslab.converter.CommentConverter;
-import pl.coderslab.converter.LocalDateConverter;
-import pl.coderslab.converter.MeowConverter;
-import pl.coderslab.converter.UserConverter;
+import pl.coderslab.converter.*;
 
 @Configuration
 @ComponentScan("pl.coderslab")
@@ -23,6 +20,7 @@ public class FormaterConfig implements WebMvcConfigurer {
         registry.addConverter(getUserConverter());
         registry.addConverter(getLocalDateConverter());
         registry.addConverter(getCommentConverter());
+        registry.addConverter(getPrivateMeowConverter());
     }
 
     @Bean
@@ -33,5 +31,7 @@ public class FormaterConfig implements WebMvcConfigurer {
     public LocalDateConverter getLocalDateConverter(){return new  LocalDateConverter();}
     @Bean
     public CommentConverter getCommentConverter(){return new CommentConverter();}
+    @Bean
+    public PrivateMeowConverter getPrivateMeowConverter() {return new PrivateMeowConverter();}
 }
 

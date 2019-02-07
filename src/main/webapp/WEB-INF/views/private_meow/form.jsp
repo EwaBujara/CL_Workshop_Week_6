@@ -34,7 +34,7 @@
         <form:select path="recipient">
             <form:options items="${users}"
                           itemValue="id"
-                          itemLabel="name" />
+                          itemLabel="username" />
         </form:select>
 
         <form:input path="title" placeholder="Title" cssClass="form-input"/>

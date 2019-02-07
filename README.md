@@ -1,4 +1,4 @@
-## CodersLab Workshop - Week 6 - Meower
+## CodersLab Workshop - Week 6  `Meower`
 >Spring MVC, Hibernate
 
 Task required to create **Tweeter**-like application.

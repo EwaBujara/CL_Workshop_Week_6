@@ -7,10 +7,16 @@
     <title>Private Meows Box</title>
     <%@include file="/WEB-INF/views/header.jsp"%>
 <body class="p-3 mb-2 bg-white text-dark">
+
+<a class="btn btn-danger" href="http://localhost:8080/private_meow/add">New Private Meow</a>
+<a class="btn btn-dark" href="http://localhost:8080/private_meow/inBox">In</a>
+<a class="btn btn-dark" href="http://localhost:8080/private_meow/out">Out</a>
+<h3>Meow-box</h3>
 <table class="table table-striped">
-    <tr>
+    <tr>import pl.coderslab.entity.Meow;
         <th>Title</th>
         <th>Author</th>
+        <th>Recipient</th>
         <th>Created</th>
         <th>Meow</th>
         <th>Actions</th>
@@ -18,10 +24,11 @@
     <c:forEach items="${meows}" var="meow">
         <tr>
             <td>${meow.title}</td>
-            <td>${meow.user.username}</td>
+            <td>${meow.author.username}</td>
+            <td>${meow.recipient.username}</td>
             <td>${meow.created}</td>
-            <td>${fn:substring(meow.meowText, 0, 40)}</td>
-            <td><a class="btn btn-dark" href="http://localhost:8080/meow/meow/${meow.id}">See more</a></td>
+            <td>${fn:substring(meow.message, 0, 40)}</td>
+            <td><a class="btn btn-dark" href="http://localhost:8080/private_meow/show/${meow.id}">See more</a></td>
         </tr>
 
     </c:forEach>

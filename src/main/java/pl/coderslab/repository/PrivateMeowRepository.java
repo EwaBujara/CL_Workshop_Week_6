@@ -7,6 +7,6 @@ import pl.coderslab.entity.User;
 import java.util.List;
 
 public interface PrivateMeowRepository extends JpaRepository<PrivateMeow, Long> {
-    List<PrivateMeow> findAllByAuthor(User user);
-    List<PrivateMeow> findAllByRecipient(User user);
+    List<PrivateMeow> findAllByAuthorOrderByCreatedDesc(User user);
+    List<PrivateMeow> findAllByRecipientOrderByCreatedDesc(User user);
 }
