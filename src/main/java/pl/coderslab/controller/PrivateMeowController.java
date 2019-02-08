@@ -44,7 +44,10 @@ public class PrivateMeowController {
 
     @GetMapping("/show/{id}")
     public String showMessage(Model model, @PathVariable Long id){
-        model.addAttribute("meow", privateMeowRepository.findOne(id));
+        PrivateMeow privateMeow = privateMeowRepository.findOne(id);
+        privateMeow.setStatus(false);
+        privateMeowRepository.save(privateMeow);
+        model.addAttribute("meow", privateMeow);
         return "private_meow/private_meow";
     }
 
@@ -65,6 +68,7 @@ public class PrivateMeowController {
         }
         User currentUser = (User)session.getAttribute("currentUser");
         privateMeow.setAuthor(currentUser);
+        privateMeow.setStatus(true);
         privateMeowRepository.save(privateMeow);
         return "redirect:"+request.getContextPath()+"/private_meow/inBox";
     }

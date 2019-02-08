@@ -30,7 +30,7 @@
             <td>${user.email}</td>
             <td><a class="btn btn-dark" href="http://localhost:8080/meow/list/${user.id}">${user.meows.size()}</a></td>
                 <c:if test="${currentUser.id != user.id}">
-            <td><a class="btn btn-dark" href="http://localhost:8080/home">Send Private Meow</a></td>
+            <td><a class="btn btn-dark" href="http://localhost:8080/private_meow/add">Send Private Meow</a></td>
                 </c:if>
             <c:if test="${currentUser.id == user.id}">
                 <td><a class="btn btn-dark" href="http://localhost:8080/user/account">Your profile</a></td>

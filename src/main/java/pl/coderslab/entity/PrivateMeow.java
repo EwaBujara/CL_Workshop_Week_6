@@ -2,6 +2,7 @@ package pl.coderslab.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "private_meows")
@@ -21,9 +22,9 @@ public class PrivateMeow {
     @ManyToOne
     private User recipient;
 
-    private LocalDate created = LocalDate.now();
+    private LocalDateTime created = LocalDateTime.now();
 
-    private boolean status = true;
+    private boolean status;
 
     public PrivateMeow() {
     }
@@ -60,11 +61,11 @@ public class PrivateMeow {
         this.recipient = recipient;
     }
 
-    public LocalDate getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDate created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 

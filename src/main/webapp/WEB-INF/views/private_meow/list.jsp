@@ -12,8 +12,9 @@
 <a class="btn btn-dark" href="http://localhost:8080/private_meow/inBox">In</a>
 <a class="btn btn-dark" href="http://localhost:8080/private_meow/out">Out</a>
 <h3>Meow-box</h3>
+
 <table class="table table-striped">
-    <tr>import pl.coderslab.entity.Meow;
+    <tr>
         <th>Title</th>
         <th>Author</th>
         <th>Recipient</th>
@@ -22,8 +23,10 @@
         <th>Actions</th>
     </tr>
     <c:forEach items="${meows}" var="meow">
-        <tr>
-            <td>${meow.title}</td>
+
+       <c:if test="${meow.status==true}"> <tr bgcolor="#db7093"> </c:if>
+       <c:if test="${meow.status==false}"> <tr> </c:if>
+        <td><c:if test="${meow.status==true}">NEW </c:if>${meow.title}</td>
             <td>${meow.author.username}</td>
             <td>${meow.recipient.username}</td>
             <td>${meow.created}</td>

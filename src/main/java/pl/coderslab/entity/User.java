@@ -12,26 +12,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @NotEmpty
-//    @Size(min = 6, max = 32)
-//    @Column(unique = true)
+
     private String username;
 
-//    @Email
-//    @NotEmpty
-//    @Column(unique = true)
     private String email;
 
-//    @Size(min = 6, max = 32)
-//    @NotEmpty
+
     private String password;
 
     @Transient
     private String passwordConfirm;
 
-    private String localisation;
 
-    private String description;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Meow> meows = new ArrayList<>();
@@ -43,7 +35,6 @@ public class User {
     @OneToMany(mappedBy = "recipient", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<PrivateMeow> receivedPrivateMeows = new ArrayList<>();
 
-    private boolean enabled;
 
     public User() {
     }
@@ -88,13 +79,6 @@ public class User {
         this.meows = meows;
     }
 
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
 
     public String getPasswordConfirm() {
         return passwordConfirm;
@@ -104,21 +88,6 @@ public class User {
         this.passwordConfirm = passwordConfirm;
     }
 
-    public String getLocalisation() {
-        return localisation;
-    }
-
-    public void setLocalisation(String location) {
-        this.localisation = location;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public List<PrivateMeow> getSentPrivateMeows() {
         return sentPrivateMeows;

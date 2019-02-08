@@ -21,6 +21,7 @@ public class FormaterConfig implements WebMvcConfigurer {
         registry.addConverter(getLocalDateConverter());
         registry.addConverter(getCommentConverter());
         registry.addConverter(getPrivateMeowConverter());
+        registry.addConverter(getLocalDateTimeConverter());
     }
 
     @Bean
@@ -33,5 +34,7 @@ public class FormaterConfig implements WebMvcConfigurer {
     public CommentConverter getCommentConverter(){return new CommentConverter();}
     @Bean
     public PrivateMeowConverter getPrivateMeowConverter() {return new PrivateMeowConverter();}
+    @Bean
+    public LocalDateTimeConverter getLocalDateTimeConverter() {return new LocalDateTimeConverter();}
 }
 
